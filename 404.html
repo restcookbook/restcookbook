@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<html xmlns="http://www.w3.org/1999/html">
     <head>
         <meta content='Rest CookBook' name='description'>
 
@@ -11,7 +11,7 @@
         <link href='/favicon.ico' type='image/x-icon' rel='icon'>
         <link href='/favicon.ico' type='image/x-icon' rel='shortcut icon'>
 
-        <title>{% if page.title %} {{ page.title }} | {% endif %} - The RESTful cookbook</title>
+        <title>404 - The RESTful cookbook</title>
     </head>
 
     <body>
@@ -31,52 +31,6 @@
             </div>
         </div>
 
-        <div class='last sidebar span-8'>
-            <h2>Topics</h2>
-            <ul>
-                <li><b>HTTP Headers</b></li>
-                <li>
-                    <ul class='subnavlist'>
-                        <li class='recipe'><a href="/recipies/httpheaders/language.html">Language headers</a></li>
-                    </ul>
-                </li>
-
-                <li><b>HTTP Verbs</b></li>
-                <li>
-                    <ul class='subnavlist'>
-                        <li class='recipe'><a href="/recipies/httpverbs/put-vs-post.html">PUT vs POST</a></li>
-                        <li class='recipe'><a href="/recipies/httpverbs/patch.html">Using PATCH</a></li>
-                    </ul>
-                </li>
-
-                <li><b>HTTP Status codes</b></li>
-                <li>
-                    <ul class='subnavlist'>
-                        <li class='recipe'><a href="/recipies/adding-a-host-entry.html">Add a host entry</a></li>
-                        <li class='recipe'><a href="/recipies/removing-a-host-entry.html">Remove a host entry</a></li>
-                        <li class='recipe'><a href="/recipies/remove-all-unmanaged-host-entries.html">Remove all unmanaged host entries</a></li>
-                        <li class='recipe'><a href="/recipies/same-rolename-in-each-domain.html">Localise service host entries</a></li>
-                    </ul>
-                </li>
-
-                <li><b>HATEOAS</b></li>
-                <li>
-                    <ul class='subnavlist'>
-                        <li class='recipe'><a href="/recipies/exec-a-command-in-a-manifest.html">Execute commands from Puppet Manifests</a></li>
-                    </ul>
-                </li>
-
-                <li><b>Miscellaneous</b></li>
-                <li>
-                    <ul class='subnavlist'>
-                        <li class='recipe'><a href="/recipies/miscellaneous/safe_and_idempotency.html">Safe and idempotent methods</a></li>
-                        <li class='recipe'><a href="/recipies/miscellaneous/code_on_demand.html">Code on demand</a></li>
-                    </ul>
-                </li>
-
-            </ul>
-        </div>
-
 
         <div class="container">
             <div class="span-16 last">
@@ -85,7 +39,20 @@
             <div class="span-15">
                 <div class="span-14 last" id="bodycontent">
 
-                    {{ content }}
+                    <h1>404 - Not found</h1>
+
+                    <p>
+                        The server has not found anything matching the Request-URI. No indication is given of whether the condition is temporary or permanent. The
+                        410 (Gone) status code SHOULD be used if the server knows, through some internally configurable mechanism, that an old resource is
+                        permanently unavailable and has no forwarding address. This status code is commonly used when the server does not wish to reveal exactly why
+                        the request has been refused, or when no other response is applicable.
+                    </p>
+
+                    <p>
+                        <a href="/">Go back to the main page...</a>
+                    </p>
+
+
 
                 </div>
             </div>
