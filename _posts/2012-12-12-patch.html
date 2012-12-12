@@ -1,10 +1,32 @@
 ---
 layout: recipe
-title: Using PATCH
+title: When to use the PATCH method
 category: HTTP Methods
 author: joshua thijssen
 author_email: jthijssen@noxlogic.nl
 ---
-<h2>PATCH is awesomesause</h2>
 
-<p>Really...</p>
+<p>The HTTP methods PATCH can be used to update partial resources. For instance, when you only need to update one field of the resource, PUTting a complete resource
+representation might be cumbersome and utilizes more bandwidth</p>
+
+{% highlight xml %}
+    PATCH /user/jthijssen HTTP/1.1
+    <user>
+        <firstname>Joshua</firstname>
+    </user>
+{% endhighlight %}
+
+
+<p>Also, the PUT method is idempotent. PUTting the same data multiple times to the same resource, should not result in different resources,
+while POSTing to the same resource can result creation of multiple resources.</p>
+
+<h3>See also</h3>
+<ul>
+    <li><a href="http://tools.ietf.org/html/rfc5789">RFC 5789 - HTTP PATCH</a></li>
+</ul>
+
+<h3>Caveats</h3>
+<ul>
+    <li>PATCH is neither safe nor idempotent.</li>
+    <li>An API implementing PATCH must patch atomically. It MUST not be possible that resources are half-patched when requisted by a GET</li>
+</ul>

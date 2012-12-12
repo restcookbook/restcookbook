@@ -1,0 +1,26 @@
+---
+layout: recipe
+title: When to send 400 or 500 codes
+category: HTTP Methods
+author: joshua thijssen
+author_email: jthijssen@noxlogic.nl
+---
+
+<p>4xx codes are used to tell the client that a fault has taken place on THEIR side. They should not retransmit the same
+request again, but fix the error first.</p>
+
+<p>5xx codes tell the client something happened on the server and their request by itself was perfectly valid. The client can
+continue and try again with the request without modification.</p>
+
+<p>If your API is trying to save a record to a database and this fails because there is an error with the database, for
+instance, it's not reachable, or a constraint fails, use a 5xx code (prefereably 500 - Internal server error). Always add a
+response to what went wrong. This response SHOULD be displayed to the client, or if it's an automated system, it can retry
+again with the same request.</p>
+
+
+<p>If you as a client recieve a 500 status code, you can decide to try again (after a waiting-period, for a set number of
+times) to see if the server can handle the same request later on. Some status codes like 503 can return a retry-after header.
+This can be used to figure out how long a client SHOULD wait until a next attempt should be tried.</p>
+
+
+
