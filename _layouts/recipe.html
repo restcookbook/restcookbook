@@ -1,0 +1,13 @@
+---
+layout: default
+---
+
+{{ content }}
+
+<p>Recipe written by
+{% if page.author_email %}
+    <a href="mailto://{{ page.author_email }}">{{ page.author }}</a>
+{% else %}
+    {{ page.author }}
+{% endif %}
+</p>

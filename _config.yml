@@ -1,1 +1,2 @@
-permalink: date
+permalink: /:categories/:title/
+exclude: README.md
