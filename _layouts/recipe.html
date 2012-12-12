@@ -2,12 +2,14 @@
 layout: default
 ---
 
+<h2>{{ page.title }}</h2>
+
 {{ content }}
 
-<p>Recipe written by
+<adress>This recipe has been written by
 {% if page.author_email %}
-    <a href="mailto://{{ page.author_email }}">{{ page.author }}</a>
+    <a href="mailto://{{ page.author_email }}">{{ page.author }}</a>.
 {% else %}
-    {{ page.author }}
+    {{ page.author }}.
 {% endif %}
-</p>
+</adress>
