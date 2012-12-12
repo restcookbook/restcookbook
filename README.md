@@ -15,16 +15,16 @@ Creating a new page
 As said, a page must be placed in the _post directory, and in the year-month-day-filename.html format. Otherwise it
 wont get picked up by the system. Every post should look somewhat like this:
 
-  ---
-  layout: recipe
-  title: <Title>
-  category: <Category>
-  author: <your name>
-  author_email: <your email address>
-  ---
-  <h2>Title</h2>
+    ---
+    layout: recipe
+    title: <Title>
+    category: <Category>
+    author: <your name>
+    author_email: <your email address>
+    ---
+    <h2>Title</h2>
 
-  <p>Your recipe</p>
+    <p>Your recipe</p>
 
 The author_email address is optional. Make sure the category name is one of the existing category names (case matters),
 otherwise your posting will be added inside a new topic. If you have troubles creating a new page, take a look at one
