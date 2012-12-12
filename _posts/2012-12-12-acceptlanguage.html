@@ -1,9 +1,17 @@
 ---
 layout: recipe
-title: Language headers
+title: Unsatisfied Accept-Language header
 category: HTTP Headers
 author: joshua thijssen
+author_email: jthijssen@noxlogic.nl
 ---
-<h2>Using the HTTP accept-language header to figure out the preffered language</h2>
 
-<p>Accept-Language.! </p>
+<p>If an HTTP Accept header can't be satisfied, return a 406. If an Accept-Language header can't be satisfied, what's the proper response code?</p>
+
+<h3>Answer</h3>
+<p>You should return a 406. RFC 2616 10.4.7 says "accept headers" plural. This suggests every Accept-* header that cannot be satisfied, should return a 406 response.</p>
+
+<h3>See also</h3>
+<ul>
+    <li><a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.4.7">RFC 2616 - Section 10.4.7</a></li>
+</ul>

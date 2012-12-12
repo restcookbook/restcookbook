@@ -33,7 +33,14 @@
 
         <div class='last sidebar span-8'>
             <h2>Topics</h2>
-            <ul>
+            <ul class="topics">
+
+                <li>
+                      <ul class='subnavlist'>
+                            <li class='recipe'><a href="/">Home</a></li>
+                      </ul>
+                </li>
+                <br/>
 
                 {% for category in site.sorted_categories %}
                     <li><b>{{ category | first }}</b> ({{ category | last | size }})</li>
@@ -44,49 +51,10 @@
                         </ul>
                     </li>
                     {% endfor %}
+                    <br/>
                 {% endfor %}
 
-<!--
-                <li><b>HTTP Headers</b></li>
-                <li>
-                    <ul class='subnavlist'>
-                        <li class='recipe'><a href="/recipies/httpheaders/language.html">Language headers</a></li>
-                    </ul>
-                </li>
 
-                <li><b>HTTP Verbs</b></li>
-                <li>
-                    <ul class='subnavlist'>
-                        <li class='recipe'><a href="/recipies/httpverbs/put-vs-post.html">PUT vs POST</a></li>
-                        <li class='recipe'><a href="/recipies/httpverbs/patch.html">Using PATCH</a></li>
-                    </ul>
-                </li>
-
-                <li><b>HTTP Status codes</b></li>
-                <li>
-                    <ul class='subnavlist'>
-                        <li class='recipe'><a href="/recipies/adding-a-host-entry.html">Add a host entry</a></li>
-                        <li class='recipe'><a href="/recipies/removing-a-host-entry.html">Remove a host entry</a></li>
-                        <li class='recipe'><a href="/recipies/remove-all-unmanaged-host-entries.html">Remove all unmanaged host entries</a></li>
-                        <li class='recipe'><a href="/recipies/same-rolename-in-each-domain.html">Localise service host entries</a></li>
-                    </ul>
-                </li>
-
-                <li><b>HATEOAS</b></li>
-                <li>
-                    <ul class='subnavlist'>
-                        <li class='recipe'><a href="/recipies/exec-a-command-in-a-manifest.html">Execute commands from Puppet Manifests</a></li>
-                    </ul>
-                </li>
-
-                <li><b>Miscellaneous</b></li>
-                <li>
-                    <ul class='subnavlist'>
-                        <li class='recipe'><a href="/recipies/miscellaneous/safe_and_idempotency.html">Safe and idempotent methods</a></li>
-                        <li class='recipe'><a href="/recipies/miscellaneous/code_on_demand.html">Code on demand</a></li>
-                    </ul>
-                </li>
--->
             </ul>
         </div>
 
