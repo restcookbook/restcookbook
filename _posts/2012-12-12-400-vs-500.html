@@ -17,7 +17,6 @@ instance, it's not reachable, or a constraint fails, use a 5xx code (prefereably
 response to what went wrong. This response SHOULD be displayed to the client, or if it's an automated system, it can retry
 again with the same request.</p>
 
-
 <p>If you as a client recieve a 500 status code, you can decide to try again (after a waiting-period, for a set number of
 times) to see if the server can handle the same request later on. Some status codes like 503 can return a retry-after header.
 This can be used to figure out how long a client SHOULD wait until a next attempt should be tried.</p>

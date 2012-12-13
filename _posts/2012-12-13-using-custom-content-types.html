@@ -1,0 +1,23 @@
+---
+layout: recipe
+title: Custom content-types
+category: Resources
+author: joshua thijssen
+author_email: jthijssen@noxlogic.nl
+---
+
+<p>How can I create my own custom content-types that are representations of users, categories, articles etc?</p>
+
+<p>Do not use a standard text/xml content-type. A client is not capable of handling this kind of information. Instead, use a custom format in the following form:</p>
+
+{% highlight xml %}
+    Content-type: application/vnd+company.category+xml
+    Content-type: application/vnd+company.category+html
+    Content-type: application/vnd+company.category+json
+{% endhighlight %}
+
+<p>This allows your clients to process the information (in this case: your categories) as the specified content-type. All three of these content-types are categories,
+but they are represented in different formats (xml, html and json). Even though this is still information that clients need to know in advance, clients know what to
+expect, since they can ask for the specific information (categories, in this case), without outside knowledge like the URL etc.</p>
+
+<p>All appliation/vnd are vendor-specific content-types and are not standarized. These are for non-standard content-types only.</p>
