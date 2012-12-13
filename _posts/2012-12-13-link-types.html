@@ -1,0 +1,31 @@
+---
+layout: recipe
+title: Using link-types in relations
+category: Resources
+author: joshua thijssen
+author_email: jthijssen@noxlogic.nl
+---
+
+<p>How does a client know what to do when encountering a link-type inside a rel-tag?</p>
+
+{% highlight xml %}
+    <link rel="comments" type="application/x.atom+xml" title="Blog comments" href="http://.."/>
+{% endhighlight %}
+
+<p>Using links is the most important part of HATEOAS. With links, clients can discover the possibilities and actions that
+    can take place in your API. However, clients should know what a specific link does. This can be found through the
+    relation-type, which is stored in the "rel"-attributes.</p>
+
+<p>There are specific relation types that are predefined. If you use one of these relation-types inside your own API, you
+    MUST make sure they behave as expected, otherwise this might confuse your clients. See below for a link to these
+    relation-types.</p>
+
+<p>If you use non-standard relation types, make sure clients can simply find out what the using the specified link does.
+    Don't create ambigious link-types.</p>
+
+<h3>See also</h3>
+<ul>
+    <li><a href="http://www.iana.org/assignments/link-relations/link-relations.xml">IANA - Link relation</a></li>
+    <li><a href="http://www.w3.org/TR/html5/links.html">HTML5 Specification - Links</a></li>
+</ul>
+
