@@ -6,27 +6,27 @@ author: joshua thijssen
 author_email: jthijssen@noxlogic.nl
 ---
 
-<p>If I have a (large) collection of resources, how can I supply a client with a paginated list?</p>
+<p class="question">If I have a (large) collection of resources, how can I supply a client with a paginated list?</p>
 
-<p>Answer: Don't use custom pagination systems like adding a page number to the URL or query string. Instead, use link relations.</p>
+<p>Don't use custom pagination systems like adding a page number to the URL or query string. Instead, use link relations.</p>
 
 {% highlight xml %}
-    GET /collection HTTP/1.1
+GET /collection HTTP/1.1
 
-    HTTP/1.1 200 OK
-    <collection>
-        <article id="1">...</article>
-        <article id="1">...</article>
-        <article id="1">...</article>
-        <article id="1">...</article>
-        <article id="1">...</article>
-        <meta>
-            <link rel="self" href="/collection" title="Current page"/>
-            <link rel="next" href="/collection/2" title="Next page"/>
-            <link rel="first" href="/collection/1" title="First page"/>
-            <link rel="last" href="/collection/5" title="Last page"/>
-        </meta>
-    </collection>
+HTTP/1.1 200 OK
+<collection>
+    <article id="1">...</article>
+    <article id="1">...</article>
+    <article id="1">...</article>
+    <article id="1">...</article>
+    <article id="1">...</article>
+    <meta>
+        <link rel="self" href="/collection" title="Current page"/>
+        <link rel="next" href="/collection/2" title="Next page"/>
+        <link rel="first" href="/collection/1" title="First page"/>
+        <link rel="last" href="/collection/5" title="Last page"/>
+    </meta>
+</collection>
 {% endhighlight %}
 
 <p>If the client want to browse through the next set of collections, it can do so by following the "next" relation link. These are

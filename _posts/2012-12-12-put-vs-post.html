@@ -6,6 +6,8 @@ author: joshua thijssen
 author_email: jthijssen@noxlogic.nl
 ---
 
+<p class="question">When should we use PUT and when should we use POST?</p>
+
 <p>The HTTP methods POST and PUT aren't the HTTP equivalent of the CRUD's create and update. The both serve a different purpose. It's quite possible, valid and
 even preferred in some occasions, to use PUT to create resources, or use POST to update resources.</p>
 
@@ -13,7 +15,9 @@ even preferred in some occasions, to use PUT to create resources, or use POST to
 while POSTing to the same resource can result creation of multiple resources.</p>
 
 <h3>Caveats</h3>
+<p>
 <ul>
     <li>PUT and POST are both unsafe methods. However, PUT is idempotent, while POST is not.</li>
 </ul>
+</p>
 
