@@ -2,14 +2,15 @@
 layout: default
 ---
 
-<h2>{{ page.title }}</h2>
-
 {{ content }}
 
-<adress>This recipe has been written by
+<br/>
+<div style='float:right'>
+<adress>This recipe has been writte by
 {% if page.author_email %}
     <a href="mailto://{{ page.author_email }}">{{ page.author }}</a>.
 {% else %}
     {{ page.author }}.
 {% endif %}
 </adress>
+</div>
