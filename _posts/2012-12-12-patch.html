@@ -6,14 +6,16 @@ author: joshua thijssen
 author_email: jthijssen@noxlogic.nl
 ---
 
+<p class="question">When should we use the PATCH HTTP method?</p>
+
 <p>The HTTP methods PATCH can be used to update partial resources. For instance, when you only need to update one field of the resource, PUTting a complete resource
 representation might be cumbersome and utilizes more bandwidth</p>
 
 {% highlight xml %}
-    PATCH /user/jthijssen HTTP/1.1
-    <user>
-        <firstname>Joshua</firstname>
-    </user>
+PATCH /user/jthijssen HTTP/1.1
+<user>
+    <firstname>Joshua</firstname>
+</user>
 {% endhighlight %}
 
 
