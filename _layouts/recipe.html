@@ -4,13 +4,24 @@ layout: default
 
 {{ content }}
 
-<br/>
-<div style='float:right'>
-<adress>This recipe has been writte by
-{% if page.author_email %}
-    <a href="mailto://{{ page.author_email }}">{{ page.author }}</a>.
-{% else %}
-    {{ page.author }}.
-{% endif %}
-</adress>
+<div style='margin: 3em'>
+    <span class='st_facebook_hcount' displayText='Facebook'></span>
+    <span class='st_twitter_hcount' displayText='Tweet'></span>
+    <span class='st_linkedin_hcount' displayText='LinkedIn'></span>
+    <span class='st_googleplus_hcount' displayText='Google +'></span>
+    <span class='st_email_hcount' displayText='Email'></span>
+    <br/>
+    <br/>
+    <hr>
+    <div style='float:right'>
+        <adress>This recipe has been writte by
+        {% if page.author_email %}
+            <a href="mailto://{{ page.author_email }}">{{ page.author }}</a>.
+        {% else %}
+            {{ page.author }}.
+        {% endif %}
+        </adress>
+    </div>
+    <br/>
 </div>
+
