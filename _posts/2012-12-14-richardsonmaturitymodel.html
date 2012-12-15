@@ -1,0 +1,52 @@
+---
+layout: recipe
+title: What is the Richardson Maturity Model?
+category: Miscellaneous
+author: joshua thijssen
+author_email: jthijssen@noxlogic.nl
+---
+
+<p class="question">What is the Richardson Maturity Model?</p>
+
+<p>The Richardson Maturity Model is a way to grade your API according to the REST constraints. The better your API
+    adheres these constraints, the higher its score is. The Richardson Maturity Model knows 4 levels (0-3), where level
+    3 designates a truly RESTful API.</p>
+</p>
+
+<h3>Level 0: Swamp of POX</h3>
+<p>Level 0 uses a transport protocol merely for tunneling. No properties of the transfer protocol is used, and all
+    work is done through this tunnel. It will use only one entrypoint (URI) and one kind of method (in HTTP, this
+    normally is the POST method. Examples of these are SOAP and XML-RPC.</p>
+
+<h3>Level 1: Resources</h3>
+<p>When your API can distinguish between different resources, it might be level 1. This level uses multiple URIs, where
+    where every URI is the entrypoint to a specific resource. Instead of going through http://example.org/articles, you
+    actually distinguish between http://example.org/article/1 and http://example.org/article/2. Still, this level uses
+    only one single method like POST.</p>
+
+<h3>Level 2: HTTP verbs</h3>
+<p>To be honest, I don't this level. This is because this level suggests that in order to be truly RESTful, your API
+    <b>MUST</b> use HTTP verbs. It doesn't. REST is completely transport agnostic, and if you want to use a different
+    transport protocol, you can do so, and your API will still be RESTful.</p>
+<p>This level indicates that your API should use the transport protocol properties in order to deal with scalability and
+    failures. Don't use a single POST method for all, but make use of GET when you are requesting resources, and use the
+    DELETE method when you want to delete a resources. Also, use the response codes of your tunneling protocol. Don't
+    use 200 (OK) code when something went wrong for instance. By doing this for the HTTP transport protocol, or any other
+    transport protocol you like to use, you have reached level 2.</p>
+
+<h3>Level 3: Hypermedia controls</h3>
+<p>Level 3, the highest level, uses HATEOAS to deal with discovering the possibilities of your API towards the clients.
+    More information about HATEOAS can be found below.</p>
+
+
+<h3>See also</h3>
+<ul>
+    <li><a href="http://martinfowler.com/articles/richardsonMaturityModel.html">Richardsons Maturity Model</a>
+</ul>
+
+<h3>Caveats</h3>
+<ul>
+    <li>Even though it's tempting to create your own pagination scheme by "building" URLs, you should only use the information given by
+    the API. This means, you cannot assume that the 3rd page can be found at /collection/3. If you do, your client will brake as soon
+    as the API changes its pagination behaviour.</li>
+</ul>

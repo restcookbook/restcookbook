@@ -8,11 +8,54 @@ author_email: jthijssen@noxlogic.nl
 
 <p class="question">When should we use PUT and when should we use POST?</p>
 
-<p>The HTTP methods POST and PUT aren't the HTTP equivalent of the CRUD's create and update. The both serve a different purpose. It's quite possible, valid and
-even preferred in some occasions, to use PUT to create resources, or use POST to update resources.</p>
+<p>The HTTP methods POST and PUT aren't the HTTP equivalent of the CRUD's create and update. The both serve a
+    different purpose. It's quite possible, valid and even preferred in some occasions, to use PUT to create resources,
+    or use POST to update resources.</p>
 
-<p>Also, the PUT method is idempotent. PUTting the same data multiple times to the same resource, should not result in different resources,
-while POSTing to the same resource can result creation of multiple resources.</p>
+<p>Use PUT when you can update a resource completely through a specific resource. For instance, if you know that an
+    article resides at http://example.org/article/1234, you can PUT a new resource representation of this article
+    directly through a PUT on this URL.</p>
+
+<p>If you do not know the actual resource location, for instance, when you add a new article, but do not have any idea
+    where to store it, you can POST it to an URL, and let the server decide the actual URL.</p>
+
+{% highlight xml %}
+PUT /article/1234 HTTP/1.1
+<article>
+    <title>red stapler</title>
+    <price currency="eur">12.50</price>
+</article>
+{% endhighlight %}
+
+{% highlight xml %}
+POST /articles HTTP/1.1
+<article>
+    <title>blue stapler</title>
+    <price currency="eur">7.50</price>
+</article>
+
+HTTP/1.1 201 Created
+Location: /articles/63636
+{% endhighlight %}
+
+<p>As soon as you know the new resource location, you can use PUT again to do updates to the blue stapler article. But
+    as said before: you CAN add new resources through PUT as well. The next example is perfectly valid if your API
+    provides this functionality:</p>
+
+{% highlight xml %}
+PUT /articles/green-stapler HTTP/1.1
+<article>
+    <title>green stapler</title>
+    <price currency="eur">9.95</price>
+</article>
+
+HTTP/1.1 201 Created
+Location: /articles/green-stapler
+{% endhighlight %}
+
+<p>Here, the client decided on the actual resource URL.</p>
+
+
 
 <h3>Caveats</h3>
 <p>
@@ -21,3 +64,10 @@ while POSTing to the same resource can result creation of multiple resources.</p
 </ul>
 </p>
 
+
+<h3>See also</h3>
+<p>
+<ul>
+    <li><a href="/HTTP%20Methods/idempotency">Idempotent and safe methods</a></li>
+</ul>
+</p>
