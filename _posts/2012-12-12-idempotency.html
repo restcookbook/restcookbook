@@ -8,7 +8,7 @@ author_email: jthijssen@noxlogic.nl
 
 <p class="question">What are idempotent and/or safe methods?</p>
 
-<p>Safe methods are HTTP methods that do not modify resources. For instance, using GET or HEAD on a resource URL, should
+<p>Safe methods are HTTP methods that do not modify resources. For instance, using [GET] or [HEAD] on a resource URL, should
     NEVER change the resource. However, this is not completely true. It means: it won't change the resource representation.
     It is still possible, that safe methods do change things on on a server or resource, but this should not reflect in a
     different representation.
@@ -39,14 +39,14 @@ GET /blog/1234/delete HTTP/1.1
     example is not idempotent. Executing this 10 times will result in a different outcome as when running 5 times. Since
     both examples are changing the value of a, both are non-safe methods.</p>
 
-<p>Idempotency is important in building a fault-tolerant API. Suppose a client wants to update a resource through POST.
-    Since POST is not a idempotent method, calling it multiple times can result in wrong updates. What would happen if
-    you sent out the POST request to the server, but you get a timeout. Is the resource actually updated? Does the
+<p>Idempotency is important in building a fault-tolerant API. Suppose a client wants to update a resource through [POST].
+    Since [POST] is not a idempotent method, calling it multiple times can result in wrong updates. What would happen if
+    you sent out the [POST] request to the server, but you get a timeout. Is the resource actually updated? Does the
     timeout happened during sending the request to the server, or the response to the client? Can we safely retry again,
     or do we need to figure out first what has happened with the resource? By using idempotent methods, we do not have
     to answer this question, but we can safely resend the request until we actually get a response back from the server.</p>
 
-<p>Be careful when dealing with safe methods as well: if a seemingly safe method like GET will change a resource, it might
+<p>Be careful when dealing with safe methods as well: if a seemingly safe method like [GET] will change a resource, it might
     be possible that any middleware client proxy systems between you and the server, will cache this response. Another
     client who wants to change this resource through the same URL (like: http://example.org/api/article/1234/delete), will
     not call the server, but return the information directly from the cache. Non-safe (and non-idempotent) methods will
@@ -71,7 +71,7 @@ GET /blog/1234/delete HTTP/1.1
 <p>
 <ul>
     <li><a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.1">RFC 2616 - HTTP-1.1 Spec</a></li>
-    <li><a href="/HTTP Methods/put-vs-post/">When to use PUT or POST?</a></li>
+    <li><a href="/HTTP Methods/put-vs-post/">When to use [PUT] or [POST]?</a></li>
 </ul>
 </p>
 
