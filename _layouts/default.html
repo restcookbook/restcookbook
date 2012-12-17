@@ -35,16 +35,9 @@
             </div>
         </div>
 
-        <div class='last sidebar span-8'>
+        <div class='last sidebar span-10'>
             <h2>Topics</h2>
             <ul class="topics">
-
-                <li>
-                      <ul class='subnavlist'>
-                            <li class='recipe'><a href="/">Home</a></li>
-                      </ul>
-                </li>
-                <br/>
 
                 {% for category in site.sorted_categories %}
                     <li><b>{{ category | first }}</b> ({{ category | last | size }})</li>
