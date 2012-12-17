@@ -12,7 +12,7 @@ author_email: jthijssen@noxlogic.nl
 [202] (Accepted) response code. This informs the client that the request has been accepted and understood by the server, but the resource is not (yet) created.
 Send the temporary resource inside the Location header.</p>
 
-<b>Request:</b>
+<h3>Request:</h3>
 {% highlight xml %}
 POST /blogs HTTP/1.1
 <xml>
@@ -20,7 +20,7 @@ POST /blogs HTTP/1.1
 </xml>
 {% endhighlight %}
 
-<b>Response:</b>
+<h3>Response:</h3>
 {% highlight xml %}
 HTTP1.1 202 Accepted
 Location: /queue/12345
