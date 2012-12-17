@@ -25,7 +25,7 @@ author_email: jthijssen@noxlogic.nl
     only one single method like POST.</p>
 
 <h3>Level 2: HTTP verbs</h3>
-<p>To be honest, I don't this level. This is because this level suggests that in order to be truly RESTful, your API
+<p>To be honest, I don't like this level. This is because this level suggests that in order to be truly RESTful, your API
     <b>MUST</b> use HTTP verbs. It doesn't. REST is completely transport agnostic, and if you want to use a different
     transport protocol, you can do so, and your API will still be RESTful.</p>
 <p>This level indicates that your API should use the transport protocol properties in order to deal with scalability and
@@ -47,6 +47,6 @@ author_email: jthijssen@noxlogic.nl
 <h3>Caveats</h3>
 <ul>
     <li>Even though it's tempting to create your own pagination scheme by "building" URLs, you should only use the information given by
-    the API. This means, you cannot assume that the 3rd page can be found at /collection/3. If you do, your client will brake as soon
+    the API. This means, you cannot assume that the 3rd page can be found at /collection/3. If you do, your client will break as soon
     as the API changes its pagination behaviour.</li>
 </ul>
