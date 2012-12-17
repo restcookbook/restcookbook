@@ -13,7 +13,7 @@ module Jekyll
     end
 
     def convert(content)
-        content.gsub! /\[(\d{3})\]/, "<a class=\"http_code\" href=\"http://httpstatus.es/\\1\">\\1</a></span>";
+        content.gsub! /\[(\d{3})\]/, "<a class=\"http_code\" href=\"http://httpstatus.es/\\1\">\\1</a>";
         content.gsub! /\[([A-Z]{3,})\]/, "<span class=\"http_method\">\\1</span>";
         content
     end
