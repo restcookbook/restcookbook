@@ -8,7 +8,7 @@ author_email: jthijssen@noxlogic.nl
 
 <p class="question">When should we use the PATCH HTTP method?</p>
 
-<p>The HTTP methods PATCH can be used to update partial resources. For instance, when you only need to update one field of the resource, PUTting a complete resource
+<p>The HTTP methods [PATCH] can be used to update partial resources. For instance, when you only need to update one field of the resource, [PUT]ting a complete resource
 representation might be cumbersome and utilizes more bandwidth</p>
 
 {% highlight xml %}
@@ -19,8 +19,8 @@ PATCH /user/jthijssen HTTP/1.1
 {% endhighlight %}
 
 
-<p>Also, the PUT method is idempotent. PUTting the same data multiple times to the same resource, should not result in different resources,
-while POSTing to the same resource can result creation of multiple resources.</p>
+<p>Also, the [PUT] method is idempotent. [PUT]ting the same data multiple times to the same resource, should not result in different resources,
+while [POST]ing to the same resource can result creation of multiple resources.</p>
 
 <h3>See also</h3>
 <ul>
@@ -29,6 +29,6 @@ while POSTing to the same resource can result creation of multiple resources.</p
 
 <h3>Caveats</h3>
 <ul>
-    <li>PATCH is neither safe nor idempotent.</li>
-    <li>An API implementing PATCH must patch atomically. It MUST not be possible that resources are half-patched when requisted by a GET</li>
+    <li>[PATCH] is neither safe nor idempotent.</li>
+    <li>An API implementing [PATCH] must patch atomically. It MUST not be possible that resources are half-patched when requisted by a [GET].</li>
 </ul>

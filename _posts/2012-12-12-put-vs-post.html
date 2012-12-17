@@ -8,16 +8,16 @@ author_email: jthijssen@noxlogic.nl
 
 <p class="question">When should we use PUT and when should we use POST?</p>
 
-<p>The HTTP methods POST and PUT aren't the HTTP equivalent of the CRUD's create and update. The both serve a
-    different purpose. It's quite possible, valid and even preferred in some occasions, to use PUT to create resources,
-    or use POST to update resources.</p>
+<p>The HTTP methods [POST] and [PUT] aren't the HTTP equivalent of the CRUD's create and update. The both serve a
+    different purpose. It's quite possible, valid and even preferred in some occasions, to use [PUT] to create resources,
+    or use [POST] to update resources.</p>
 
-<p>Use PUT when you can update a resource completely through a specific resource. For instance, if you know that an
-    article resides at http://example.org/article/1234, you can PUT a new resource representation of this article
-    directly through a PUT on this URL.</p>
+<p>Use [PUT] when you can update a resource completely through a specific resource. For instance, if you know that an
+    article resides at http://example.org/article/1234, you can [PUT] a new resource representation of this article
+    directly through a [PUT] on this URL.</p>
 
 <p>If you do not know the actual resource location, for instance, when you add a new article, but do not have any idea
-    where to store it, you can POST it to an URL, and let the server decide the actual URL.</p>
+    where to store it, you can [POST] it to an URL, and let the server decide the actual URL.</p>
 
 {% highlight xml %}
 PUT /article/1234 HTTP/1.1
@@ -38,8 +38,8 @@ HTTP/1.1 201 Created
 Location: /articles/63636
 {% endhighlight %}
 
-<p>As soon as you know the new resource location, you can use PUT again to do updates to the blue stapler article. But
-    as said before: you CAN add new resources through PUT as well. The next example is perfectly valid if your API
+<p>As soon as you know the new resource location, you can use [PUT] again to do updates to the blue stapler article. But
+    as said before: you CAN add new resources through [PUT] as well. The next example is perfectly valid if your API
     provides this functionality:</p>
 
 {% highlight xml %}
@@ -60,7 +60,7 @@ Location: /articles/green-stapler
 <h3>Caveats</h3>
 <p>
 <ul>
-    <li>PUT and POST are both unsafe methods. However, PUT is idempotent, while POST is not.</li>
+    <li>[PUT] and [POST] are both unsafe methods. However, [PUT] is idempotent, while [POST] is not.</li>
 </ul>
 </p>
 
