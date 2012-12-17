@@ -8,8 +8,8 @@ author_email: jthijssen@noxlogic.nl
 
 <p class="question">How can I let users create resources that might take a considerable amount of time. I cannot have my users wait on the API to finish.</p>
 
-<p>Instead of creating the actual resources, create a temporary one. Instead of returning a 201 (Created) HTTP response, you can then issue at
-202 (Accepted) response code. This informs the client that the request has been accepted and understood by the server, but the resource is not (yet) created.
+<p>Instead of creating the actual resources, create a temporary one. Instead of returning a [201] (Created) HTTP response, you can then issue at
+[202] (Accepted) response code. This informs the client that the request has been accepted and understood by the server, but the resource is not (yet) created.
 Send the temporary resource inside the Location header.</p>
 
 <b>Request:</b>
@@ -28,8 +28,8 @@ Location: /queue/12345
 
 <p>This location can store information about the status of the actual resource: an ETA on when it will be created, what is currently being done or processed.</p>
 
-<p>When the actual resource has been created, the temporary resources can return a 303 (see other) response. The location header returns the URI to the definitive
-resource. A client can either DELETE the temporary resource, or the server can expire this resource and return a 410 GONE later on.</p>
+<p>When the actual resource has been created, the temporary resources can return a [303] (see other) response. The location header returns the URI to the definitive
+resource. A client can either [DELETE] the temporary resource, or the server can expire this resource and return a [410] GONE later on.</p>
 
 
 <h3>See also</h3>
@@ -39,6 +39,6 @@ resource. A client can either DELETE the temporary resource, or the server can e
 
 <h3>Caveats</h3>
 <ul>
-    <li>Don't use a 301 or 302 when a resource has been created. These codes tell the client that the SAME resource can be found at another location. A 303 tells
+    <li>Don't use a [301] or [302] when a resource has been created. These codes tell the client that the SAME resource can be found at another location. A [303] tells
 a client that ANOTHER resource can be found at ANOTHER location.</li>
 </ul>
