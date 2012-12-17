@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta content='Rest CookBook' name='description'>
 
         <link href='/css/blueprint/screen.css' type='text/css' rel='stylesheet' media='screen, projection'>
@@ -19,7 +20,7 @@
     </head>
 
     <body>
-        <a href="https://github.com/restcookbook/restcookbook"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+        <div><a href="https://github.com/restcookbook/restcookbook"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a></div>
 
         <div id="logostrip">
             <div class="container">
@@ -40,7 +41,7 @@
             <ul class="topics">
 
                 {% for category in site.sorted_categories %}
-                    <li><b>{{ category | first }}</b> ({{ category | last | size }})</li>
+                    <li class="topic-header"><b>{{ category | first }}</b> ({{ category | last | size }})</li>
                     {% for post in category.last %}
                     <li>
                         <ul class='subnavlist'>
@@ -48,9 +49,7 @@
                         </ul>
                     </li>
                     {% endfor %}
-                    <br/>
                 {% endfor %}
-
 
             </ul>
         </div>
@@ -73,7 +72,7 @@
         <div id="footerstrip">
             <div class="container">
                 <div class="span-24 last" id="footer">
-                    Copyright 2012 <a href="http://www.adayinthelifeof.nl/">Joshua Thijssen</a> and others. Like to contribute? Add your recipe to our <a href="http://github.com/restcookbook/restcookbook">github repository</a>.<br/>
+                    Copyright 2012 <a href="http://www.adayinthelifeof.nl/">Joshua Thijssen</a> and others. Like to contribute? Add your recipe to our <a href="http://github.com/restcookbook/restcookbook">github repository</a>.<br>
                     Looking for Puppet recipies? Try the <a href="http://www.puppetcookbook.com">Puppet CookBook</a>.
                 </div>
             </div>
