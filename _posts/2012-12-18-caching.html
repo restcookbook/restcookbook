@@ -1,0 +1,55 @@
+---
+layout: recipe
+title: Caching your REST API
+category: Basics
+author: Tom Van Looy
+---
+
+<p class="question">Caching your REST API</p>
+
+<p>The goal of caching is never having to generate the same response twice. The benefit of doing this is that we gain speed and
+reduce server load. The best way to cache your API is to put a gateway cache (or reverse proxy) in front of it. Some
+frameworks provide their own reverse proxies, but a very powerful, open-source one is
+<a href="https://www.varnish-cache.org/">Varnish</a>.
+
+<p>When a safe method is used on a resource URL, the reverse proxy should cache the response that is returned from your API. It
+will then use this cached response to answers all subsequent requests for the same resource before they hit your API. When an
+unsafe method is used on a resource URL, the cache ignores it and passes it to the API. The API is responsible for making sure
+that the cached resource is invalidated.</p>
+
+<p>HTTP has an unofficial [PURGE] method that is used for purging caches. When an API receives a call with an unsafe method on
+a resource, it should fire a [PURGE] request on that resource so that the reverse proxy knows that the cached resource should
+be expired. Note that you will still have to configure your reverse proxy to actually remove a resource when it receives a
+request with the [PURGE] method.</p>
+
+<p>The result will look like this:</p>
+
+{% highlight xml %}
+GET /article/1234 HTTP/1.1
+   - The resource is not cached yet
+   - Send request to the API
+   - Store response in cache and return
+
+GET /article/1234 HTTP/1.1
+   - The resource is cached
+   - Return response from cache
+
+PUT /article/1234 HTTP/1.1
+   - Unsafe method, send to API
+
+PURGE /article/1234 HTTP/1.1
+   - API sends PURGE method to the cache
+   - The resources is removed from the cache
+
+GET /article/1234 HTTP/1.1
+   - The resource is not cached yet
+   - Send request to the API
+   - Store response in cache and return
+{% endhighlight %}
+
+<h3>See also</h3>
+<ul>
+    <li><a href="http://tomayko.com/writings/things-caches-do">Things Caches Do</a>
+    <li><a href="http://www.mnot.net/cache_docs/">Caching Tutorial</a>
+</ul>
+
