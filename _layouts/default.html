@@ -41,7 +41,7 @@
             <ul class="topics">
 
                 {% for category in site.sorted_categories %}
-                    <li class="topic-header"><b>{{ category | first }}</b> ({{ category | last | size }})</li>
+                    <li class="topic-header"><b>{{ category | first }}</b> ({{ category | last | size }} {% if category.last.size == 1 %}recipe{%else%}recipes{%endif%})</li>
                     {% for post in category.last %}
                     <li>
                         <ul class='subnavlist'>

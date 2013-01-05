@@ -6,7 +6,7 @@ module Jekyll
 
     def generate(site)
       site.config['sorted_categories'] = site.categories.map { |cat, posts|
-        [ cat, posts.size, posts ] }.sort { |a,b| b[1] <=> a[1] }
+        [ cat, cat, posts ] }.sort { |a,b| a[1] <=> b[1] }
     end
 
   end
