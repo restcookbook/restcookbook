@@ -9,14 +9,22 @@ author_email: jthijssen@noxlogic.nl
 <address>This question still needs answering. If you like to help, make a pull request for this question.</address>
 
 <p class="question">What is the code-on-demand constrain, and why is it an optional constrain?</p>
+<p>Code-on-Demand (COD) is the only optional constrain in REST. It allows clients to improve its flexibility because in
+    fact it is the server who decides how certain things will be done. For instance, with Code-On-Demand, a client can
+    download a javascript, java applet or even a flash application in order to encrypt communication so servers are not
+    aware of any encryption routines / keys used in this process.
+</p>
+
+<p>However, using COD reduces visibility, which is why this constraint is optional. Also, not every API needs this kind
+    of flexibility.</p>
 
 
 <h3>See also</h3>
 <ul>
-    <li><a href="#"></a>
+    <li><a href="http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm#sec_5_1_7">Roy T. Fielding's dissertation - Code on demand</a>
 </ul>
 
 <h3>Caveats</h3>
 <ul>
-    <li></li>
+    <li>Using code-on-demand reduces visibility.</li>
 </ul>
