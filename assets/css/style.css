@@ -1,0 +1,51 @@
+body {
+    font-size: 16px;
+    line-height: 24px;
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 300;
+}
+
+code,
+pre {
+    font-size: 14px;
+}
+
+#menu .home {
+    font-size: 20px;
+}
+
+#main {
+    padding-top: 20px;
+}
+
+#content {
+    padding-bottom: 30px;
+}
+
+#footer {
+    font-size: 13px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+#github {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 0;
+    z-index: 2000;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+    height: auto;
+    margin-top: 0;
+    line-height: inherit;
+    vertical-align: baseline;
+    background-image: none;
+    background-position: 0 0;
+}

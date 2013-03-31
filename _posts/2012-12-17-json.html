@@ -6,8 +6,6 @@ author: joshua thijssen
 author_email: jthijssen@noxlogic.nl
 ---
 
-<p class="question">Is my API RESTful when I use (only) JSON?</p>
-
 <p>Short anwser: no. Long answer: no, not yet. One of the key constrains on REST is that a RESTful API must use
     hypermedia formats (the HATEOAS constraint). Unfortunately, JSON is not a hypermedia format. There is no predefined
     way to deal with link discovery in JSON. One API could use the following for link discovery:</p>

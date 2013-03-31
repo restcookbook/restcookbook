@@ -1,83 +1,83 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta content='Rest CookBook' name='description'>
-
-        <link href='/css/blueprint/screen.css' type='text/css' rel='stylesheet' media='screen, projection'>
-        <link href='/css/blueprint/print.css'  type='text/css' rel='stylesheet' media='print'>
-        <link href='/css/restcookbook.css'   type='text/css' rel='stylesheet' media='screen, projection'>
-        <!--[if lt IE 8]> >%link{:rel=>"stylesheet", :href=>"css/blueprint/ie.css", :type=>"text/css", :media=>"screen, projection"} <![endif]-->
-
-        <link href='/favicon.ico' type='image/x-icon' rel='icon'>
-        <link href='/favicon.ico' type='image/x-icon' rel='shortcut icon'>
-
-        <title>{% if page.title %} {{ page.title }} | {% endif %} - The RESTful cookbook</title>
-
-        <script type="text/javascript">var switchTo5x=true;</script>
-        <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-        <script type="text/javascript">stLight.options({publisher: "ur-d42e1020-2570-67a2-4a62-8793edf858c5"});</script>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width">
+        <meta name="description" content="Rest CookBook">
+        <title>{% if page.title %} {{ page.title }} | {% endif %}The RESTful cookbook</title>
+        <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/assets/css/bootstrap-responsive.min.css">
+        <link rel="stylesheet" href="/assets/css/style.css">
+        <!--[if lt IE 9]>
+        <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <script>window.html5 || document.write('<script src="/assets/js/html5shiv.js"><\/script>')</script>
+        <![endif]-->
+        <!-- <link href='/css/restcookbook.css'   type='text/css' rel='stylesheet' media='screen, projection'> -->
+        <script>
+        var switchTo5x = true;
+        </script>
+        <script src="http://w.sharethis.com/button/buttons.js"></script>
+        <script>
+        stLight.options({ publisher: "ur-d42e1020-2570-67a2-4a62-8793edf858c5" });
+        </script>
     </head>
-
     <body>
-        <div><a href="https://github.com/restcookbook/restcookbook"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a></div>
-
-        <div id="logostrip">
-            <div class="container">
-                <div class="span-24 last" id="topheader">
-                    <h1><a href='/'>The RESTful CookBook</a></h1>
-                </div>
-                <div class="span-2">
-                    &nbsp;
-                </div>
-                <div class="span-22 last" id="topsubheader">
-                    <h4><em>How to do stuff RESTful</em></h4>
-                </div>
-            </div>
-        </div>
-
-        <div class='last sidebar span-10'>
-            <h2>Topics</h2>
-            <ul class="topics">
-
-                {% for category in site.sorted_categories %}
-                    <li class="topic-header"><b>{{ category | first }}</b> ({{ category | last | size }})</li>
-                    {% for post in category.last %}
-                    <li>
-                        <ul class='subnavlist'>
-                            <li class='recipe'><a href="{{ post.url }}">{{ post.title }}</a></li>
+        <!--[if lt IE 7]>
+        <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+        <a href="https://github.com/restcookbook/restcookbook" id="github">
+            <img src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub">
+        </a>
+        <header class="navbar-static-top navbar">
+            <div class="navbar-inner">
+                <div class="container">
+                    <nav id="menu">
+                        <ul class="nav">
+                            <li class="home">
+                                <a href="/"><i class="icon-home"></i></a>
+                            </li>
+                            {% for category in site.sorted_categories %}
+                            {% assign active = false %}
+                            {% for post in category.last %}
+                            {% if post.url == page.url %}{% assign active = true %}{% endif %}
+                            {% endfor %}
+                            <li class="dropdown{% if active %} active{% endif %}">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ category | first }} <small>{{ category | last | size }}</small> &#x25BE;</a>
+                                <ul class="dropdown-menu">
+                                    {% for post in category.last %}
+                                    <li{% if post.url == page.url %} class="active"{% endif %}>
+                                        <a href="{{ post.url }}">{{ post.title }}</a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                            {% endfor %}
                         </ul>
-                    </li>
-                    {% endfor %}
-                {% endfor %}
-
-            </ul>
-        </div>
-
-
-        <div class="container">
-            <div class="span-16 last">
-                &nbsp;
+                    </nav>
+                </div>
             </div>
-            <div class="span-15">
-                <div class="span-16 last" id="bodycontent">
-
-                    {{ content }}
-
+        </header>
+        <div id="main" class="container">
+            <div class="row">
+                <div class="span8 offset2">
+                    <article id="content">
+                        {{ content }}
+                    </article>
+                    <footer id="footer" class="text-center">
+                        Copyright 2012 <a href="http://www.adayinthelifeof.nl/">Joshua Thijssen</a> and others. Like to contribute? Add your recipe to our <a href="http://github.com/restcookbook/restcookbook">github repository</a>.<br>
+                        Looking for Puppet recipies? Try the <a href="http://www.puppetcookbook.com">Puppet CookBook</a>.
+                    </footer>
                 </div>
             </div>
         </div>
-
-
-        <div id="footerstrip">
-            <div class="container">
-                <div class="span-24 last" id="footer">
-                    Copyright 2012 <a href="http://www.adayinthelifeof.nl/">Joshua Thijssen</a> and others. Like to contribute? Add your recipe to our <a href="http://github.com/restcookbook/restcookbook">github repository</a>.<br>
-                    Looking for Puppet recipies? Try the <a href="http://www.puppetcookbook.com">Puppet CookBook</a>.
-                </div>
-            </div>
-        </div>
-
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="/assets/js/jquery.min.js"><\/script>')</script>
+        <script src="/assets/js/bootstrap.min.js"></script>
     </body>
 </html>
-

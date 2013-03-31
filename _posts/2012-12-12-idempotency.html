@@ -6,8 +6,6 @@ author: joshua thijssen
 author_email: jthijssen@noxlogic.nl
 ---
 
-<p class="question">What are idempotent and/or safe methods?</p>
-
 <p>Safe methods are HTTP methods that do not modify resources. For instance, using [GET] or [HEAD] on a resource URL, should
     NEVER change the resource. However, this is not completely true. It means: it won't change the resource representation.
     It is still possible, that safe methods do change things on on a server or resource, but this should not reflect in a
