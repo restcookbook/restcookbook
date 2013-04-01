@@ -1,7 +1,6 @@
 Contributing to the REST cookbook
 ---------------------------------
-The REST cookbook website uses [Jekyll](https://github.com/mojombo/jekyll/wiki), a simple yet powerfull blog engine 
-that easily allows for creating simple websites like these.
+The [REST cookbook website](http://restcookbook.com) uses [Jekyll](https://github.com/mojombo/jekyll/wiki), a simple yet powerfull blog engine that easily allows for creating simple websites like these.
 
 Contributing to our site is simple:
   * Fork the website to your own github account.
