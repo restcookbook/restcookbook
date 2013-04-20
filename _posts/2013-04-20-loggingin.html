@@ -1,0 +1,125 @@
+---
+layout: recipe
+title: How do I let users log into my RESTful API?
+category: Basics
+author: joshua thijssen
+author_email: jthijssen@noxlogic.nl
+---
+
+<p class="question">I want users to login into my RESTful API so only they can see (protected) resources. What is the correct way to do this?</p>
+
+<p>One of the most important things to remember is that REST is stateless. A request cannot be dependent on another
+    request, as that would imply state. </p>
+
+<h3>Using HTTP basic authentication</h3>
+<p>The most simple way to deal with authentication is to use HTTP basic authentication. We use a special HTTP header where
+    we add 'username:password' encoded in base64.</p>
+
+{% highlight xml %}
+GET / HTTP/1.1
+Host: example.org
+Authorization: Basic Zm9vOmJhcg==
+{% endhighlight %}
+
+<p>
+Note that even though your credentials are encoded, they are not encrypted! It is very easy to retrieve the username and
+password from a basic authentication. Do not use this authentication scheme on plain HTTP, but only through SSL/TLS.</p>
+
+<h3>HMAC</h3>
+<p>One of the downsides of basic authentication is that we need to send over the password on every request. Also, it
+    does not safeguard against tampering of headers or body. Another way is to use HMAC (hash based message authentication).
+Instead of having passwords that needs to be send over, we actually send a hashed version of the password, together with more information.
+
+Let's assume we have the following credentials: username "johndoe", password "secret". Suppose we try to access a protected resource <b>/users/foo/financialrecords</b>.
+
+First, we need to fetch all the information we need, and concatenate this.
+
+{% highlight xml %}
+GET+/users/johndoe/financialrecords
+{% endhighlight %}
+
+<p>Here, we just concatenate the HTTP verb and the actual URL. We could add other information as well, like the current timestamp, a
+    random number, or the md5 of the message body in order to prevent tampering of the body, or prevent replay attacks. Next, we generate
+    a hmac:</p>
+
+{% highlight xml %}
+digest = base64encode(hmac("sha256", "secret", "GET+/users/foo/financialrecords"))
+{% endhighlight %}
+
+<p>This digest we can send over as a HTTP header:</p>
+
+{% highlight xml %}
+GET /users/johndoe/financialrecords HTTP/1.1
+Host: example.org
+Authentication: hmac johndoe:[digest]
+{% endhighlight %}
+
+<p>
+Right now, the server knows the user "johndoe" tries to acces the resource. The server can generate the digest as
+well, since it has all information (note that the "password" is not encrypted on the server, as the server needs to know
+the actual value. Hence we call this a "secret", not a "password".
+</p>
+
+<p>
+Even if somebody was listening in on the conversation, it could not use the authentication information to POST data to
+john's financial records, or look at some other users financial records, or any other URL, as this would change the digest and
+the eavesdropper does not have the secret that both the server and client has.</p>
+<p>
+However, the eavesdropper could access John's financial records whenever it wants since it doesn't change the digest. This
+    is why many times more information is send over, like the current time, and a nonce:
+</p>
+
+{% highlight xml %}
+digest = base64encode(hmac("sha256", "secret", "GET+/users/foo/financialrecords+20apr201312:59:24+123456"))
+{% endhighlight %}
+
+<p>We added two extra pieces of information. The current date and a number that we only use once (nonce)</p>
+
+{% highlight xml %}
+GET /users/johndoe/financialrecords HTTP/1.1
+Host: example.org
+Authentication: hmac johndoe:123456:[digest]
+Date: 20 apr 2013 12:59:24
+{% endhighlight %}
+
+<p>
+The server can reconstruct the digest again, since the client sends over the nonce and date. When the date is not in a
+certain range of the current servers time (say, 10 minutes), the server can ignore the message, as it probably is a
+replay of an earlier send message (note: either that, or the server or clients time is wrong. This is a common issue when
+dealing with time-limited authencations!).
+</p>
+
+<p>
+The nonce is a number we only use once. If we want to access the same resource again, we MUST change this number. This
+means that every time we access a resource, the nonce will be different, and thus the digest will be different, even if we
+access the resource in the same second. This way we are sure that no replay attacks can be done. Each request is only valid
+once, and only once.</p>
+
+<h3>OAuth</h3>
+<p>One of the downsides of hmac is that there are no more passwords, but just plain secrets. When johns secret gets out,
+    everyone could use that secret to access the account of john. A common way to prevent this is to use temporary
+    tokens. John "asks" the server for a "token" and "secret", and with these token and secret, it is allowed to access its
+    protected resources.</p>
+<p>OAuth is a mechanism that allows you to create temporary tokens. It is a common used scheme for authentication and
+    authorization, however the OAuth(1.1) specification is a bit difficult to implement for beginners. However, many
+    libraries in pretty much every language exist to make this much easier to implement.</p>
+
+<h3>OAuth2</h3>
+<p>Even though the name suggests its the next version of OAuth, the whole structure has changed radically and cannot even
+    be considered a new version. OAuth2 is a complete new way of authentication which is easier to implement and maintain.
+    However, OAuth2 is not officially a standard yet, although many sites and organizations are using the current drafts.</p>
+
+<h3>See also</h3>
+<ul>
+    <li><a href="http://tools.ietf.org/html/rfc1945#section-11">RFC 1945</a>
+    <li><a href="http://oauth.net/">OAuth specifications</a>
+    <li><a href="http://tools.ietf.org/html/rfc6749">RFC 6749 - OAuth2 proposed standard</a>
+</ul>
+
+<h3>Caveats</h3>
+<ul>
+    <li>Basic authentication and OAuth versions MUST be protected through SSL/TLS. They should not be used over plain HTTP.</li>
+    <li>Using nonces can improve your security, but you MUST store and compare nonces server-side.</li>
+    <li>A common issue when using time-windows for request, is that either server or client is not using the correct time. Make
+        sure both server and client are using systems like NTP to keep times in sync</li>
+</ul>
