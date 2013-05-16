@@ -14,7 +14,7 @@ author_email: jthijssen@noxlogic.nl
 OPTIONS /my/resource HTTP/1.1
 Host: example.org
 
-200 OK
+HTTP/1.1 200 OK
 Allow: HEAD,GET,DELETE,OPTIONS
 {% endhighlight %}
 
@@ -28,7 +28,7 @@ Allow: HEAD,GET,DELETE,OPTIONS
 OPTIONS /a/resource HTTP/1.1
 Host: example.org
 
-200 OK
+HTTP/1.1 200 OK
 Allow: HEAD,GET,OPTIONS
 {% endhighlight %}
 
@@ -37,7 +37,7 @@ OPTIONS /a/resource HTTP/1.1
 Host: example.org
 Authentication: .....
 
-200 OK
+HTTP/1.1 200 OK
 Allow: HEAD,GET,PUT,POST,DELETE,OPTIONS
 {% endhighlight %}
 
