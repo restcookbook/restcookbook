@@ -8,8 +8,7 @@ author_email: jthijssen@noxlogic.nl
 
 <p class="question">I want users to login into my RESTful API so only they can see (protected) resources. What is the correct way to do this?</p>
 
-<p>One of the most important things to remember is that REST is stateless. A request cannot be dependent on another
-    request, as that would imply state. </p>
+<p>One of the main differences between RESTful and other server-client communications services is that any session state in a RESTful setup is held in the client, the server is stateless. This requires the client to provide all information necessary to make the request.</p>
 
 <h3>Using HTTP basic authentication</h3>
 <p>The most simple way to deal with authentication is to use HTTP basic authentication. We use a special HTTP header where
