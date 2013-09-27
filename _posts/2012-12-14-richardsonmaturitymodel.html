@@ -8,15 +8,16 @@ author_email: jthijssen@noxlogic.nl
 
 <p class="question">What is the Richardson Maturity Model?</p>
 
-<p>The Richardson Maturity Model is a way to grade your API according to the REST constraints. The better your API
-    adheres these constraints, the higher its score is. The Richardson Maturity Model knows 4 levels (0-3), where level
+<p>The Richardson Maturity Model is a way to grade your API according to the constraints of REST. The better your API
+    adheres to these constraints, the higher its score is. The Richardson Maturity Model knows 4 levels (0-3), where level
     3 designates a truly RESTful API.</p>
 </p>
 
 <h3>Level 0: Swamp of POX</h3>
-<p>Level 0 uses a transport protocol merely for tunneling. No properties of the transfer protocol is used, and all
-    work is done through this tunnel. It will use only one entrypoint (URI) and one kind of method (in HTTP, this
-    normally is the [POST] method. Examples of these are SOAP and XML-RPC.</p>
+<p>Level 0 uses its implementing protocol (normally HTTP, but it doesn't have to be) like a transport protocol.
+    That is, it tunnels requests and responses through its protocol without using the protocol to indicate application state.
+    It will use only one entry point (URI) and one kind of method (in HTTP, this normally is the [POST] method).
+    Examples of these are SOAP and XML-RPC.</p>
 
 <h3>Level 1: Resources</h3>
 <p>When your API can distinguish between different resources, it might be level 1. This level uses multiple URIs, where
@@ -26,13 +27,13 @@ author_email: jthijssen@noxlogic.nl
 
 <h3>Level 2: HTTP verbs</h3>
 <p>To be honest, I don't like this level. This is because this level suggests that in order to be truly RESTful, your API
-    <b>MUST</b> use HTTP verbs. It doesn't. REST is completely transport agnostic, and if you want to use a different
-    transport protocol, you can do so, and your API will still be RESTful.</p>
-<p>This level indicates that your API should use the transport protocol properties in order to deal with scalability and
+    <b>MUST</b> use HTTP verbs. It doesn't. REST is completely protocol agnostic, so if you want to use a different
+    protocol, your API can still be RESTful.</p>
+<p>This level indicates that your API should use the protocol properties in order to deal with scalability and
     failures. Don't use a single [POST] method for all, but make use of [GET] when you are requesting resources, and use the
-    [DELETE] method when you want to delete a resources. Also, use the response codes of your tunneling protocol. Don't
-    use [200] (OK) code when something went wrong for instance. By doing this for the HTTP transport protocol, or any other
-    transport protocol you like to use, you have reached level 2.</p>
+    [DELETE] method when you want to delete a resources. Also, use the response codes of your application protocol. Don't
+    use [200] (OK) code when something went wrong for instance. By doing this for the HTTP application protocol, or any other
+    application protocol you like to use, you have reached level 2.</p>
 
 <h3>Level 3: Hypermedia controls</h3>
 <p>Level 3, the highest level, uses HATEOAS to deal with discovering the possibilities of your API towards the clients.
