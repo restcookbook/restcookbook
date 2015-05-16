@@ -1,0 +1,53 @@
+---
+layout: recipe
+title: How do I know which HTTP methods are supported
+category: HTTP Methods
+author: joshua thijssen
+author_email: jthijssen@noxlogic.nl
+---
+
+<p class="question">I want to figure out which methods are supported on a resource.</p>
+
+<p>use the [OPTIONS] method for this:</p>
+
+{% highlight xml %}
+OPTIONS /my/resource HTTP/1.1
+Host: example.org
+
+HTTP/1.1 200 OK
+Allow: HEAD,GET,DELETE,OPTIONS
+{% endhighlight %}
+
+<p>Even though it's not defined, this method CAN return a message body. It will return an ALLOW header, that returns
+    all the methods the current resource is capable of handling.</p>
+
+<p>If resources require authentication, it is possible that OPTIONS returns more methods once you added authentication
+    headers to the request.</p>
+
+{% highlight xml %}
+OPTIONS /a/resource HTTP/1.1
+Host: example.org
+
+HTTP/1.1 200 OK
+Allow: HEAD,GET,OPTIONS
+{% endhighlight %}
+
+{% highlight xml %}
+OPTIONS /a/resource HTTP/1.1
+Host: example.org
+Authentication: .....
+
+HTTP/1.1 200 OK
+Allow: HEAD,GET,PUT,POST,DELETE,OPTIONS
+{% endhighlight %}
+
+
+<h3>See also</h3>
+<ul>
+    <li><a href="http://zacstewart.github.io/2012/04/14/http-options-method.html">Zac Stewart's blogpost about OPTIONS</a>
+</ul>
+
+<h3>Caveats</h3>
+<ul>
+    <li>OPTIONS is not a very common implemented method.</li>
+</ul>

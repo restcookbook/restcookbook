@@ -8,14 +8,14 @@ author_email: jthijssen@noxlogic.nl
 
 <p class="question">Are REST and HTTP the same thing?</p>
 
-<p>No, they are not. HTTP stands for <b>H</b>per<b>T</b>ext <b>T</b>ransport <b>P</b>rotocol and is a way to transfer
+<p>No, they are not. HTTP stands for <b>H</b>yper<b>T</b>ext <b>T</b>ransfer <b>P</b>rotocol and is a way to transfer
     files. This protocol is used to link pages of hypertext in what we call the world-wide-web. However, there are other
     transfer protocols available, like FTP and gopher, yet they are less popular.
 </p>
 
 <p><b>RE</b>presentational <b>S</b>tate <b>T</b>ransfer, or REST, is a set of constraints that ensure a scalable,
     fault-tolerant and easily extendible system. The world-wide-web is an example of such system (and the biggest
-    example, one might say). REST by itself is not a new invention, but its the documentation on such systems like the
+    example, one might say). REST by itself is not a new invention, but it's the documentation on such systems like the
     world-wide-web.</p>
 
 <p>One thing that confuses people, is that REST and HTTP seem to be hand-in-hand. After all, the world-wide-web itself
@@ -38,11 +38,4 @@ author_email: jthijssen@noxlogic.nl
     <li><a href="http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm">Roy Fielding - Representational State Transfer (REST)</a></li>
     <li><a href="http://martinfowler.com/articles/richardsonMaturityModel.html">Richardsons Maturity Model</a>
     <li><a href="/Miscellaneous/richardsonmaturitymodel">What is the Richardsons Maturity Model</a>
-</ul>
-
-<h3>Caveats</h3>
-<ul>
-    <li>Even though it's tempting to create your own pagination scheme by "building" URLs, you should only use the information given by
-    the API. This means, you cannot assume that the 3rd page can be found at /collection/3. If you do, your client will brake as soon
-    as the API changes its pagination behaviour.</li>
 </ul>

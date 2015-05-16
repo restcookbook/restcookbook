@@ -6,30 +6,53 @@ author: joshua thijssen
 author_email: jthijssen@noxlogic.nl
 ---
 
-<address xmlns="http://www.w3.org/1999/html">This question still needs answering. If you like to help, make a pull request for this question.</address>
+<p class="question">Is my API RESTful when I use (only) JSON?</p>
 
-<p class="question">Is my API RESTfull when I use JSON?</p>
-
-<p>Short anwser: no. Long answer: no, it isn't. One of the key constrains on REST is that a RESTful API must use a
-    hypermedia format. Unfortunally, JSON is not a hypermedia format. JSON by itself has no way to deal with link discovery.
+<p>Short answer: no. Long answer: no, not yet. One of the key constrains on REST is that a RESTful API must use
+    hypermedia formats (the HATEOAS constraint). Unfortunately, JSON is not a hypermedia format. There is no predefined
+    way to deal with link discovery in JSON. One API could use the following for link discovery:</p>
 
 {% highlight json %}
-    _links
-        _rel :
-        _link :
-        _href :
-    {% endhighlight %}
+    {
+    "_links" : [
+        {
+            "rel" : "self"
+            "href" : "http://example.org/foo/bar"
+        },
+        {
+            "rel" :
+            ...
+        }
+    ]
+}
+{% endhighlight %}
 
-<p>Although JSON isn't hypermedia, some standardisation is on its way to make JSON hypermedia. Two of these, JSON-LD and HAL,
-    formalizes these links so any client can instantly follow and discover these links, without any additional knowledge on how this
-    has been setup.
+<p>while another API would use something like this:</p>
+
+{% highlight json %}
+    {
+    "hyperlink" : [
+        "self" : "http://example.org/foo/bar",
+        "next" : "http://example.org/foo/bar/2",
+    ]
+}
+{% endhighlight %}
+
+
+<p>Although JSON does't have inherent hypermedia support, some standardisation is on its way to change that. JSON-LD, which is already an official W3C standard,
+    and HAL, which is a personal project, formalize the expression of links in JSON so that clients can instantly follow and discover these links without having
+    to rely on out-of-band additional knowledge.</p>
 
 <h3>See also</h3>
 <ul>
-    <li><a href="#"></a>
+    <li><a href="http://stateless.co/hal_specification.html">HAL specification</a>
+    <li><a href="http://www.w3.org/TR/json-ld/">JSON-LD specification</a>
 </ul>
 
 <h3>Caveats</h3>
 <ul>
-    <li></li>
+    <li>Because JSON by itself has no hypermedia support, using JSON for APIs can and most probably will result in tight coupling between
+        clients and servers. Servers need to know exactly how you provide links in JSON (if at all). JSON-LD, a W3C Recommendation, or HAL can
+        reduce this coupling and allow you to formally present (hypermedia) links in your API.
+    </li>
 </ul>
