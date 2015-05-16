@@ -34,7 +34,7 @@ Regenerating a new site
 There are two ways to display your new site:
 
 Run as a standalone webserver:
-  * Start jekyll in your repository root with:  jekyll --server
+  * Start jekyll in your repository root with: `jekyll server`
   * Browse to http://<yourip>:4000 to see your site
 
 Run inside an existing webserver:
