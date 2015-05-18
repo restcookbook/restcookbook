@@ -1,2 +1,3 @@
 permalink: /:categories/:title/
-exclude: README.md
+exclude:
+  - README.md

@@ -1,18 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta content='Rest CookBook' name='description'>
+        {% include head.html %}
 
-        <link href='/css/blueprint/screen.css' type='text/css' rel='stylesheet' media='screen, projection'>
-        <link href='/css/blueprint/print.css'  type='text/css' rel='stylesheet' media='print'>
-        <link href='/css/restcookbook.css'   type='text/css' rel='stylesheet' media='screen, projection'>
-        <!--[if lt IE 8]> >%link{:rel=>"stylesheet", :href=>"css/blueprint/ie.css", :type=>"text/css", :media=>"screen, projection"} <![endif]-->
-
-        <link href='/favicon.ico' type='image/x-icon' rel='icon'>
-        <link href='/favicon.ico' type='image/x-icon' rel='shortcut icon'>
-
-        <title>{% if page.title %} {{ page.title }} | {% endif %} - The RESTful cookbook</title>
+        <!--<link href='/css/restcookbook.css'   type='text/css' rel='stylesheet' media='screen, projection'>-->
 
         <script type="text/javascript">var switchTo5x=true;</script>
         <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
@@ -20,63 +11,39 @@
     </head>
 
     <body>
+
         <div><a href="https://github.com/restcookbook/restcookbook"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a></div>
 
-        <div id="logostrip">
-            <div class="container">
-                <div class="span-24 last" id="topheader">
-                    <h1><a href='/'>The RESTful CookBook</a></h1>
-                </div>
-                <div class="span-2">
-                    &nbsp;
-                </div>
-                <div class="span-22 last" id="topsubheader">
-                    <h4><em>How to do stuff RESTful</em></h4>
-                </div>
-            </div>
+
+        <div class="col-sm-3 sidebar">
+            {% include sidebar.html %}
         </div>
 
-        <div class='last sidebar span-10'>
-            <h2>Topics</h2>
-            <ul class="topics">
+        <div class="col-sm-9">
+            <header>
+                <h1 align="right"><a href='/'>The RESTful CookBook</a></h1>
+                <h4 align="right"><em>How to do stuff RESTful</em></h4>
+                <hr>
+                <br>
+                <br>
+            </header>
 
-                {% for category in site.sorted_categories %}
-                    <li class="topic-header"><b>{{ category | first }}</b> ({{ category | last | size }})</li>
-                    {% for post in category.last %}
-                    <li>
-                        <ul class='subnavlist'>
-                            <li class='recipe'><a href="{{ post.url }}">{{ post.title }}</a></li>
-                        </ul>
-                    </li>
-                    {% endfor %}
-                {% endfor %}
+            {{ content }}
 
-            </ul>
-        </div>
-
-
-        <div class="container">
-            <div class="span-16 last">
-                &nbsp;
-            </div>
-            <div class="span-15">
-                <div class="span-16 last" id="bodycontent">
-
-                    {{ content }}
-
-                </div>
-            </div>
-        </div>
-
-
-        <div id="footerstrip">
-            <div class="container">
-                <div class="span-24 last" id="footer">
-                    Copyright 2012 <a href="http://www.adayinthelifeof.nl/">Joshua Thijssen</a> and others. Like to contribute? Add your recipe to our <a href="http://github.com/restcookbook/restcookbook">github repository</a>.<br>
+            <footer>
+                <hr/>
+                <p>
+                    This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/deed.en_US">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+                    <br>
+                    Like to contribute? Add your recipe to our <a href="http://github.com/restcookbook/restcookbook">github repository</a>.
+                    <br>
                     Looking for Puppet recipies? Try the <a href="http://www.puppetcookbook.com">Puppet CookBook</a>.
-                </div>
-            </div>
+                </p>
+
+            </footer>
         </div>
+
+
 
     </body>
 </html>

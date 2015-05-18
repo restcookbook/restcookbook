@@ -1,0 +1,31 @@
+<!-- meta information -->
+<meta charset="utf-8">
+<meta name="description" {% if page.title == "Home" %}
+      content="{{ site.data.brume.description }}" {% else %}
+      content="{{ page.content | strip_html | strip_newlines | truncate: 120 }}" {% endif %}>
+<meta name="author" content="{{ site.data.brume.author }}">
+
+<!-- Enable responsiveness on mobile devices-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<!-- title -->
+<title>{% if page.title %} {{ page.title }} | {% endif %} - The RESTful cookbook</title>
+
+<!-- icons -->
+<link rel="shortcut icon" href="{{site.baseurl}}/public/images/favicon.ico" />
+
+<!-- stylesheets -->
+<link href="{{ site.BASE_PATH }}/assets/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="{{ site.BASE_PATH }}/assets/resources/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link href="{{ site.BASE_PATH }}/assets/resources/syntax/syntax.css" rel="stylesheet">
+<link href="{{ site.BASE_PATH }}/assets/css/style.css" rel="stylesheet">
+
+<link href="{{ site.BASE_PATH }}/css/restcookbook.css" rel="stylesheet">
+
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif] d-->
+
+<!-- Google fonts -->
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic&subset=latin-ext">

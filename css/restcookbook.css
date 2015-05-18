@@ -1,3 +1,8 @@
+.sidebar a {
+    color: white;
+}
+
+
 address {
     font-style: normal;
 }
@@ -83,6 +88,16 @@ table {
         color: #fff;
         text-decoration: none;
     }
+
+
+.sidebar li {
+    padding-left: 10px;
+}
+
+.sidebar ul {
+    padding-left: 10px;
+}
+
 
 .sidebar {
     padding-top: 1.5em;
