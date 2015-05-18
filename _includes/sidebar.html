@@ -1,0 +1,22 @@
+<!-- sidebar.html -->
+<header class="sidebar-header" role="banner">
+    <h3 class="title">
+        <a href="{{ site.BASE_PATH }}/">{{ site.title }}</a>
+    </h3>
+</header>
+
+<h2>Topics</h2>
+<ul class="topics">
+
+{% for category in site.sorted_categories %}
+    <li class="topic-header"><b>{{ category | first }}</b> ({{ category | last | size }} {% if category.last.size == 1 %}recipe{%else%}recipes{%endif%})</li>
+    {% for post in category.last %}
+    <li>
+        <ul class='subnavlist'>
+            <li class='recipe'><a href="{{ post.url }}">{{ post.title }}</a></li>
+        </ul>
+    </li>
+    {% endfor %}
+{% endfor %}
+
+</ul>

@@ -1,0 +1,320 @@
+/* ------------------------------------------------------------------------
+-   Make browsers more friendly with padding and margin. -
+-------------------------------------------------------------------------*/
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+/* ------------------------------------------------------------------------
+-  Main background colors. -
+-------------------------------------------------------------------------*/
+
+.color-1 { background: #2c3e50; } /* Title background */
+.color-2 { background: #34495e; } /* Description background */
+.color-3 { background: #f2f2f2; } /* Modules background */
+.color-4 { background: #7f8c8d; } /* Main menu background */
+
+
+/* ------------------------------------------------------------------------
+-  The basics. -
+-------------------------------------------------------------------------*/
+
+html, body {
+    background: #d1d1d1;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 24px;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    -webkit-transition: color 0.25s ease-in, background 0.25s ease-in;
+    -moz-transition: color 0.25s ease-in, background 0.25s ease-in;
+    -o-transition: color 0.25s ease-in, background 0.25s ease-in;
+    transition: color 0.25s ease-in, background 0.25s ease-in;
+}
+
+p { line-height: 1.4; }
+
+.top { text-align: right; }
+.inside { padding-left: 15px; }
+
+
+/* ------------------------------------------------------------------------
+-  The navigation. Main menu and article links. -
+-------------------------------------------------------------------------*/
+
+nav {
+    font-size: 0.9em;
+    text-align: center;
+}
+
+    nav a {
+        padding: 0.3em;
+        text-transform: uppercase;
+    }
+
+    nav a:nth-child(2n) { margin: 5px; }
+
+    nav a:hover {
+        border: 0;
+        color: #f2f2f2 !important;
+        text-decoration: underline;
+    }
+
+
+article p a {
+    border-bottom: .125em solid #ccc;
+    display: inline;
+    padding: 0 0 .15em 0;
+}
+
+    article p a:hover, article p a:active {
+        color: #f2f2f2 !important;
+        background: #2c3e50;
+        border: 0;
+    }
+
+/* ------------------------------------------------------------------------
+-  The header (or the left side part of the page). -
+-------------------------------------------------------------------------*/
+
+.main-header {
+    float: left;
+    font-weight: 300;
+    line-height: 1.7;
+    text-align: center;
+    width: 35%;
+}
+
+    .main-header h1 {
+        font-weight: 300;
+        margin: 0;
+    }
+
+    .main-header a {
+        color: #f5f5f5;
+        text-transform: uppercase;
+    }
+
+    .main-header a:hover, .main-header a:focus { color: #e1e1e1; }
+
+
+.main-header .description { color: #e5e5e5; }
+.main-header .main-menu { padding: 0.1em; }
+
+/* ------------------------------------------------------------------------
+-  The content. -
+-------------------------------------------------------------------------*/
+
+.main-content {
+    float: right;
+    padding: 0;
+    width: 65%;
+}
+
+    .main-content a { color: #2c3e50; }
+    .main-content a:hover, .main-content a:focus { color: #2980b9; }
+
+
+.category {
+    color: #ccc;
+    position: absolute;
+    right: 0.75em;
+    top: 0.75em;
+}
+
+
+hr {
+    border: 0;
+    background: #ccc;
+    height: 1px;
+    margin: 50px 0;
+}
+
+
+.module {
+    color: #212121;
+    margin: 0.5em;
+    overflow: hidden;
+    padding: 1.5em;
+    position: relative;
+}
+
+    .main-content .module {
+        border-bottom: 2px solid #b1b1b1;
+        font-size: 0.8em;
+        margin-right: 1em;
+    }
+
+    .module img {
+        height: auto;
+        max-width: 100%;
+    }
+
+    nav.module { padding-top: 1.5em; }
+
+
+/* ------------------------------------------------------------------------
+-  Blockquote, code, pre. -
+-------------------------------------------------------------------------*/
+
+pre, code {
+    background: #f7f7f7;
+    font-size: 0.8em;
+    line-height: 1.5em;
+    padding: 0.4em;
+}
+
+
+blockquote {
+    font-style: italic;
+    border-left: 5px solid #ccc;
+    margin: 1.5em 10px;
+    padding: 0.5em 5px;
+    quotes: "\201C""\201D""\2018""\2019";
+}
+
+    blockquote:before {
+        color: #ccc;
+        content: open-quote;
+        font-size: 4em;
+        line-height: 0.1em;
+        margin-right: 0.25em;
+        vertical-align: -0.4em;
+    }
+
+    blockquote p { display: inline; }
+
+/* ------------------------------------------------------------------------
+-  Pagination. -
+-------------------------------------------------------------------------*/
+
+.pagination { text-align: center; }
+    .pagination .page_number { color: #888; }
+    .pagination .nolink { color: #666; }
+
+
+/* ------------------------------------------------------------------------
+-  Links (header). -
+-------------------------------------------------------------------------*/
+
+.links a {
+    color: #212121;
+    text-transform: lowercase;
+}
+
+    .links a:hover, .links a:active {
+        color: #212121;
+        text-decoration: underline;
+    }
+
+
+/* ------------------------------------------------------------------------
+-  Tables -
+-------------------------------------------------------------------------*/
+
+table {
+    border: 1px solid #a1a1a1;
+    border-collapse: collapse;
+    font-size: 0.8em;
+    width: 100%;
+}
+
+    table tr { border: none !important; }
+    table td,th {
+        border: 1px solid #a1a1a1;
+        padding: 3px;
+    }
+    table thead tr { background: #f2f2f2 !important; }
+    table tr:nth-child(odd) { background: #f2f2f2; }
+    table tr:nth-child(even)  { background: #e1e1e1; }
+
+
+/* ------------------------------------------------------------------------
+-  Social share (end of the post). -
+-------------------------------------------------------------------------*/
+
+.social {
+    padding: 0 !important;
+    text-align: right;
+}
+    .social ul {
+        list-style: none;
+        list-style-position: inside;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .social li {
+        display: inline-block;
+        margin: 0 !important;
+        padding: 0.5em;
+    }
+
+    .social li a {
+        color: #f5f5f5;
+        display: block;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+
+    .social li a:hover, .social li a:active {
+        color: #f5f5f5;
+        text-decoration: underline;
+    }
+
+    .fb { background: #2c3e50; } .fb:hover { background: #34495e; }
+    .tw { background: #2980b9; } .tw:hover { background: #3498db; }
+    .gp { background: #c0392b; } .gp:hover { background: #e74c3c; }
+
+
+/* ------------------------------------------------------------------------
+-  Footer. -
+-------------------------------------------------------------------------*/
+
+.footer {
+    clear: both;
+    color: #888;
+    font-size: 0.5em;
+    margin: 0em;
+    padding: 0.2em;
+    text-align: center;
+}
+    .footer a {
+        color: #444;
+        text-decoration: underline;
+    }
+
+    .footer p { margin-top: 2px; }
+
+
+/* ------------------------------------------------------------------------
+-  Make things responsive. -
+-------------------------------------------------------------------------*/
+
+@media (max-width: 850px) {
+
+    body { font-size: large; }
+
+    .main-header,
+    .main-content {
+        padding: 0.75em;
+        width: 100%;
+    }
+
+    .main-header .module { margin-left: 0; }
+    .main-content .module { margin-top: 0; }
+
+    nav { text-align: center; }
+    nav br { display: none; }
+    nav a { margin: 0 0.75em; }
+
+    .social { text-align: center; }
+    .social li { display: block; width: 100%; }
+}
