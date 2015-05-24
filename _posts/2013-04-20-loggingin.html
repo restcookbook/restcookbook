@@ -27,7 +27,7 @@ password from a basic authentication. Do not use this authentication scheme on p
 <h3>HMAC</h3>
 <p>One of the downsides of basic authentication is that we need to send over the password on every request. Also, it
     does not safeguard against tampering of headers or body. Another way is to use HMAC (hash based message authentication).
-Instead of having passwords that needs to be send over, we actually send a hashed version of the password, together with more information.
+Instead of having passwords that need to be sent over, we actually send a hashed version of the password, together with more information.
 
 Let's assume we have the following credentials: username "johndoe", password "secret". Suppose we try to access a protected resource <b>/users/foo/financialrecords</b>.
 
