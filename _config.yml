@@ -1,6 +1,8 @@
 permalink: /:categories/:title/
 exclude:
   - README.md
+  - Capfile
+  - config
 
 url: http://www.restcookbook.com
 name: restcookbook.com
