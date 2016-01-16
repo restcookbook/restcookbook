@@ -1,27 +1,36 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html>
+<head>
+    {% include head_base.html %}
+    {% include head_recipe.html %}
+</head>
 
-{{ content }}
+<body>
+    {% include header.html %}
 
-<div style='margin: 3em'>
-    <span class='st_facebook_hcount' title='Facebook'></span>
-    <span class='st_twitter_hcount' title='Tweet'></span>
-    <span class='st_linkedin_hcount' title='LinkedIn'></span>
-    <span class='st_googleplus_hcount' title='Google +'></span>
-    <span class='st_email_hcount' title='Email'></span>
-    <br>
-    <br>
-    <hr>
-    <div style='float:right'>
-        <address>This recipe has been written by
-        {% if page.author_email %}
-            <a href="mailto://{{ page.author_email }}">{{ page.author }}</a>.
-        {% else %}
-            {{ page.author }}.
-        {% endif %}
-        </address>
+    <div class="container">
+        <div class="row">
+
+            <div id="content" class="col-xs-12 col-sm-9 col-sm-push-3">
+
+                {% if page.needs_anwser %}
+                    {% include needs_answer.html %}
+                {% endif %}
+
+                {{ content }}
+
+                <hr>
+
+                {% include disqus_load.html %}
+            </div>
+            <div class="col-xs-12 col-sm-3 col-sm-pull-9 sidebar">
+                {% include sidebar.html %}
+            </div>
+        </div>
+
     </div>
-    <br>
-</div>
 
+    {% include footer.html %}
+
+</body>
+</html>
