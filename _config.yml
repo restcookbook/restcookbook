@@ -7,3 +7,5 @@ exclude:
 url: http://www.restcookbook.com
 name: restcookbook.com
 disqus_shortname: restcookbook
+
+google_analytics: UA-53222355-1
