@@ -1,0 +1,43 @@
+{% include mode_switcher.html %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    {% include head_base.html %}
+    {% include head_post.html %}
+</head>
+
+<body>
+    {% include header.html %}
+
+    <div class="container">
+        <div class="row">
+            <div id="markdown-container" class="col-lg-9">
+                <header>
+                    <p id="postTitle">{{ page.title }}</p>
+                    {% if page.tags %}
+                    <ul class="tags clearfix">
+                        {% for tag in page.tags %}
+                        <li><i class="fa fa-tag"></i> {{ tag }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    <p id="postMeta">posted on {{ page.date | date_to_string }} under category <a href="{{crturl}}category/">{{ page.categories[0] }}</a></p>
+
+                </header>
+
+                {{ content }}
+            </div>
+
+            <div id="markdown-outline" class="col-lg-3">
+            </div>
+
+            {% include disqus_load.html %}
+        </div>
+    </div>
+
+    {% include footer.html %}
+
+    <script type="text/javascript" src="{{crturl}}javascripts/markdownreader.js"></script>
+</body>
+</html>

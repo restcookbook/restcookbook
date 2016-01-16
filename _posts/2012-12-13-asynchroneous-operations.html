@@ -6,7 +6,7 @@ author: joshua thijssen
 author_email: jthijssen@noxlogic.nl
 ---
 
-<p class="question">How can I let users create resources that might take a considerable amount of time. I cannot have my users wait on the API to finish.</p>
+<h2 class="question">How can I let users create resources that might take a considerable amount of time. I cannot have my users wait on the API to finish.</h2>
 
 <p>Instead of creating the actual resources, create a temporary one. Instead of returning a [201] (Created) HTTP response, you can then issue at
 [202] (Accepted) response code. This informs the client that the request has been accepted and understood by the server, but the resource is not (yet) created.

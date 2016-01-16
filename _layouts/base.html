@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% include head_base.html %}
+
+</head>
+
+<body>
+    {% include header.html %}
+
+    <section id="l-main">
+        <div class="container">
+            <div class="row">
+                <div id="content" class="col-xs-12 col-sm-9 col-sm-push-3">
+                    {{ content }}
+                </div>
+                <div class="col-xs-12 col-sm-3 col-sm-pull-9 sidebar">
+                    {% include sidebar.html %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% include footer.html %}
+</body>
+</html>

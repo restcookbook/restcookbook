@@ -1,3 +1,7 @@
 permalink: /:categories/:title/
 exclude:
   - README.md
+
+url: http://www.restcookbook.com
+name: restcookbook.com
+disqus_shortname: restcookbook

@@ -6,7 +6,7 @@ Contributing to our site is simple:
   * Fork the website to your own github account.
   * Clone your repository onto your computer. Make sure you create a new branch, and not use the master branch.
   * Create a new page inside the /_posts/* directory. This HAS GOT TO BE IN THE FORMAT OF YEAR-MONTH-DAY-FILENAME.html!!!
-  * Add & commit your changes, and push it to your repository.
+  * Add and commit your changes, and push it to your repository.
   * Create a pull request and we will try and merge your recipe.
 
 Creating a new page
