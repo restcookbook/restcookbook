@@ -29,7 +29,7 @@ password from a basic authentication. Do not use this authentication scheme on p
     does not safeguard against tampering of headers or body. Another way is to use HMAC (hash based message authentication).
 Instead of having passwords that need to be sent over, we actually send a hashed version of the password, together with more information.
 
-Let's assume we have the following credentials: username "johndoe", password "secret". Suppose we try to access a protected resource <b>/users/foo/financialrecords</b>.
+Let's assume we have the following credentials: username "johndoe", password "secret". Suppose we try to access a protected resource <b>/users/johndoe/financialrecords</b>.
 
 First, we need to fetch all the information we need, and concatenate this.
 
@@ -42,7 +42,7 @@ GET+/users/johndoe/financialrecords
     a hmac:</p>
 
 {% highlight xml %}
-digest = base64encode(hmac("sha256", "secret", "GET+/users/foo/financialrecords"))
+digest = base64encode(hmac("sha256", "secret", "GET+/users/johndoe/financialrecords"))
 {% endhighlight %}
 
 <p>This digest we can send over as a HTTP header:</p>
@@ -55,8 +55,8 @@ Authentication: hmac johndoe:[digest]
 
 <p>
 Right now, the server knows the user "johndoe" tries to acces the resource. The server can generate the digest as
-well, since it has all information (note that the "password" is not encrypted on the server, as the server needs to know
-the actual value. Hence we call this a "secret", not a "password".
+well, since it has all information. (Note that the "password" is not encrypted on the server, as the server needs to know
+the actual value. Hence we call this a "secret", not a "password".)
 </p>
 
 <p>
@@ -69,7 +69,7 @@ However, the eavesdropper could access John's financial records whenever it want
 </p>
 
 {% highlight xml %}
-digest = base64encode(hmac("sha256", "secret", "GET+/users/foo/financialrecords+20apr201312:59:24+123456"))
+digest = base64encode(hmac("sha256", "secret", "GET+/users/johndoe/financialrecords+20apr201312:59:24+123456"))
 {% endhighlight %}
 
 <p>We added two extra pieces of information. The current date and a number that we only use once (nonce)</p>
