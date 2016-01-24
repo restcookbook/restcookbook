@@ -12,7 +12,7 @@ set :log_level, :debug
 set :keep_releases, 5
 
 set :port, 22
-set :deploy_to, '/wwwroot/restcookbook.com'
+set :deploy_to, '/home/noxlogic/domains/rest-cookbook.com/site'
 set :use_sudo, false
 
 namespace :deploy do
