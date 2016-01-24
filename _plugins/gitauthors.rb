@@ -7,7 +7,12 @@ module Jekyll
     priority :high
 
     def generate(site)
-      site.posts.map! do |post|
+      posts = site.posts
+      if Jekyll::VERSION >= '3.0.0'
+        posts = posts.docs
+      end
+
+      posts.map! do |post|
         post.data["authors"] = post.data
         post
       end
