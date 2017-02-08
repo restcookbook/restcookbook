@@ -28,14 +28,14 @@ PUT /article/1234 HTTP/1.1
 {% endhighlight %}
 
 {% highlight xml %}
-POST /articles HTTP/1.1
+POST /article HTTP/1.1
 <article>
     <title>blue stapler</title>
     <price currency="eur">7.50</price>
 </article>
 
 HTTP/1.1 201 Created
-Location: /articles/63636
+Location: /article/63636
 {% endhighlight %}
 
 <p>As soon as you know the new resource location, you can use [PUT] again to do updates to the blue stapler article. But
@@ -43,14 +43,14 @@ Location: /articles/63636
     provides this functionality:</p>
 
 {% highlight xml %}
-PUT /articles/green-stapler HTTP/1.1
+PUT /article/green-stapler HTTP/1.1
 <article>
     <title>green stapler</title>
     <price currency="eur">9.95</price>
 </article>
 
 HTTP/1.1 201 Created
-Location: /articles/green-stapler
+Location: /article/green-stapler
 {% endhighlight %}
 
 <p>Here, the client decided on the actual resource URL.</p>
