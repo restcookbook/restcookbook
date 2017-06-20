@@ -13,15 +13,15 @@ author_email: jthijssen@noxlogic.nl
     way to deal with link discovery in JSON. One API could use the following for link discovery:</p>
 
 {% highlight json %}
-    {
+{
     "_links" : [
         {
-            "rel" : "self"
+            "rel" : "self",
             "href" : "http://example.org/foo/bar"
         },
         {
-            "rel" :
-            ...
+            "rel" : "next",
+            "href" : "http://example.org/foo/bar/2"
         }
     ]
 }
@@ -30,11 +30,11 @@ author_email: jthijssen@noxlogic.nl
 <p>while another API would use something like this:</p>
 
 {% highlight json %}
-    {
-    "hyperlink" : [
+{
+    "hyperlink" : {
         "self" : "http://example.org/foo/bar",
-        "next" : "http://example.org/foo/bar/2",
-    ]
+        "next" : "http://example.org/foo/bar/2"
+    }
 }
 {% endhighlight %}
 
