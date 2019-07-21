@@ -22,9 +22,9 @@ GET /blog/1234/delete HTTP/1.1
 <p>Safe methods are methods that can be cached, prefetched without any repercussions to the resource.</p>
 
 <h3>Idempotent methods</h3>
-<p>An idempotent HTTP method is a HTTP method that can be called many times without different outcomes. It would not
-    matter if the method is called only once, or ten times over. The result should be the same. Again, this only applies
-    to the result, not the resource itself. This still can be manipulated (like an update-timestamp, provided this
+<p>An idempotent HTTP method is a HTTP method that can be called many times without a different effect on the server. It would not
+    matter if the method is called only once, or ten times over. The effect on the server should be the same. Again, this only applies
+    to what has been requested by the user. This still can be manipulated (like an update-timestamp, provided this
     information is not shared in the (current) resource representation.</p>
 
 <p>Consider the following examples:</p>
